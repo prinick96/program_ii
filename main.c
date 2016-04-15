@@ -1,6 +1,6 @@
-#include "core.h"
+#include "core.c"
 
 int main() {
-  puts("Program II\n");
+  /*t_nodo *L = (t_nodo *) */CreateEntity(OpFile("data/alumnos.txt"),"alumnos");
   return true;
 }
