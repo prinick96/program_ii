@@ -3,6 +3,7 @@
 #include <vector>
 #include <sstream>
 #include <utility>
+#include <fstream>
 using namespace std;
 
 typedef struct {
@@ -12,14 +13,17 @@ typedef struct {
     char character;
 } multi_array;
 
+//Incluyo el prototipo para que esté disponible en Node.cpp y en Lista.cpp
+vector<string> explode( const string &delimiter, const string &str);
+
 //Incluimos todas las clases
 #include "classes/Node.cpp"
 #include "classes/Lista.cpp"
 
 /*
   #Hace lo mismo que el explode() de PHP
-  #Recibe *str que es el string
-  #Recibe el delimitador, por ejemplo
+  #Recibe str por referencia que es el string
+  #Recibe el delimitador por referencia, por ejemplo
   vector<string> v = explode("_","hola_dos");
   v[0] -> hola
   v[1] -> dos
@@ -52,4 +56,28 @@ vector<string> explode( const string &delimiter, const string &str)
     }
     arr.push_back(  str.substr(k, i-k) );
     return arr;
+}
+
+Lista *CreateEntity(char *route,const short int type, Lista *element) {
+   ifstream archivo;
+   char str[180];
+   archivo.open(route);
+   element = new Lista();
+
+   if(!archivo.fail()) {
+      int i = 0;
+      while(!archivo.eof()) {
+         archivo.getline(str,180);
+         if(archivo.eof()) {
+            break;
+         }
+         element->Add(type,str);
+      }
+   } else {
+      cout << "Error al abrir el archivo" << endl;
+   }
+
+   archivo.close();
+
+   return element;
 }
