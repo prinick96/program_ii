@@ -1,16 +1,16 @@
-# Program II Documentación Principal
+# Program II Documentación Principal en C++
 
-**headers/**: Directorio de todos los headers.
+**core/**: Directorio de todos los headers.
 
-**core.h**: Es la cabecera principal.
+  **core.cpp**: Contendrá las funciones más reutilizables y enrutador de todo lo demás.
 
-**entities.h**: Es la cabecera con información de los nodos para las entidades.
+  **classes/**: Directorio con las classes.
 
-**core.c**: Contendrá las funciones más reutilizables.
+    **Lista.cpp**: Clase Lista, que crea Listas doblemente enlazadas para cada entidad.
 
-**entities.c**: Contiene funciones principales de listas para las entidades.
+    **Node.cpp**: Clase Node que define un Nodo y a su vez todas las seis entidades.
 
-**main.c**: Programa principal.
+**main.cpp**: Programa principal.
 
 **data/**: Ruta de archivos para la carga de data inicial.
 
@@ -20,7 +20,7 @@
 
 **materias.txt**: [codigo materia] _ [nombre materia] _ [creditos] _ [semestre]
 
-**secciones.txt**: [codigo seccion] _ [numero de seccion] _ [profesor] _ [max alumnos] _ [turno] _ {[hora entrada],[hora salida]} _ [cantidad de alumnos ya inscritos]
+**secciones.txt**: [codigo seccion] _ [numero de seccion] _ [cedula profesor] _ [profesor] _ [max alumnos] _ [turno] _ {[hora entrada],[hora salida]} _ [cantidad de alumnos ya inscritos]
 
 **semestres.txt**: [numero de semestre] _ [creditos dados en este semestre]
 
