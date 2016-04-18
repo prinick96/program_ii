@@ -11,8 +11,8 @@ private:
   int max_alumnos;
   int alumnos_inscritos;
   int cedula_profesor;
-  double hora_entrada;
-  double hora_salida;
+  short int hora_entrada;
+  short int hora_salida;
   string profesor;
   string turno;
 
@@ -27,6 +27,11 @@ private:
   Node *ant;//todos
 
 public:
+  /*
+    __construct().
+    Constructor de la clase Node, coloca el nodo "flotando" apenas se instancia,
+    enlazando con null a siguiente y anterior hasta que se defina estos.
+  */
   Node(Node *s = NULL, Node *a = NULL) {
     this->sig = s;
     this->ant = a;

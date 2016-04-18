@@ -6,13 +6,6 @@
 #include <fstream>
 using namespace std;
 
-typedef struct {
-    string str;
-    int integer;
-    double flotante;
-    char character;
-} multi_array;
-
 //Incluyo el prototipo para que esté disponible en Node.cpp y en Lista.cpp
 vector<string> explode( const string &delimiter, const string &str);
 
@@ -58,6 +51,13 @@ vector<string> explode( const string &delimiter, const string &str)
     return arr;
 }
 
+/*
+   #Crea una entidad y devuelve la Lista con sus datos cargados desde un .txt
+   #char *route: La ruta del archivo .txt de la entidad
+   #short int type: El tipo de entidad, se utilizará en el método Add() de la class Lista
+      Es "const" porque jamás se va a modificar su valor en lo largo del código.
+   #Lista* element: Un puntero (objeto) de la clase Lista
+*/
 Lista *CreateEntity(char *route,const short int type, Lista *element) {
    ifstream archivo;
    char str[180];
@@ -74,7 +74,7 @@ Lista *CreateEntity(char *route,const short int type, Lista *element) {
          element->Add(type,str);
       }
    } else {
-      cout << "Error al abrir el archivo" << endl;
+      cout << "ERROR: Intentando abrir el archivo <" << route << ">\n" << endl;
    }
 
    archivo.close();
