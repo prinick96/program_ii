@@ -1,9 +1,9 @@
 #include "core/core.cpp"
-//Ejemplo
+//Aqui hice un cambio(ejemplo)
 
 int main() {
 
-  Lista *Alumnos = CreateEntity((char *) "data/alumnos.txt",1,Alumnos);
+Lista *Alumnos = CreateEntity((char *) "data/alumnos.txt",1,Alumnos); //recibe la ruta del archivo , un numero que es el elemento a crear y el elemento lista(objeto/`puntero)
   Lista *Materias_I = CreateEntity((char *) "data/materias_inscritas.txt",2,Materias_I);
   Lista *Materias = CreateEntity((char *) "data/materias.txt",3,Materias);
   Lista *Secciones = CreateEntity((char *) "data/secciones.txt",4,Secciones);
