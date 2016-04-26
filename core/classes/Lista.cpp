@@ -13,6 +13,10 @@ private:
     de la entidad, de aquí se extraen los elementos a ingresar.
   */
   void CreateNode(const short int type, char *elements) {
+    /*
+      Al instnciar, si yo no le paso nada de parametros a la clase.
+      Toma por DEFECTO NULL en siguinete y tambien en anterior.
+    */
     this->new_node = new Node();
 
     vector<string> array = explode("_", (string) elements); //un vector dinámico
@@ -42,7 +46,7 @@ private:
         this->new_node->cod_seccion = array[0];
         stringstream(array[1]) >> this->new_node->numero_seccion;
         stringstream(array[2]) >> this->new_node->cedula_profesor;
-        this->new_node->profesor = array[3];
+        this->new_noder->profesor = array[3];
         stringstream(array[4]) >> this->new_node->max_alumnos;
         this->new_node->turno = array[5];
         stringstream(array[6]) >> this->new_node->hora_entrada;
@@ -78,7 +82,7 @@ public:
   void Add(const short int type, char *elements) {
     this->CreateNode(type,elements);
     if(this->primero == NULL) {
-      this->primero = new_node;
+      this->primero = this->new_node;
     } else {
       this->new_node->ant = this->ultimo;
       this->ultimo->sig = this->new_node;
@@ -91,8 +95,8 @@ public:
     menor (primer nodo) a mayor (ultimo nodo), dependiendo de un parámetro#
     Si la lista está vacía, el primer nodo == ultimo nodo
   */
-  void AddSort() {
-
+  void AddSort(const short int type, char *elements) {
+    this->CreateNode(type,elements);
   }
   void DelLast() {
     cout << "pronto" << endl;
