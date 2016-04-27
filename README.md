@@ -4,6 +4,10 @@
 
   **core.cpp**: Contendrá las funciones más reutilizables y enrutador de todo lo demás.
 
+  **interfaces/**: Directorio de las interfaces.
+
+    **menu.cpp**: Contiene la interfaz del menú principal.
+
   **classes/**: Directorio con las classes.
 
     **Lista.cpp**: Clase Lista, que crea Listas doblemente enlazadas para cada entidad.
