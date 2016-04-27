@@ -4,6 +4,11 @@
 #include <sstream>
 #include <utility>
 #include <fstream>
+
+//Si es Windows, usar cls, si es Linux usar clear
+//#define clear "cls"
+#define clear "clear"
+
 using namespace std;
 
 //Incluyo el prototipo para que esté disponible en Node.cpp y en Lista.cpp
@@ -12,6 +17,7 @@ vector<string> explode( const string &delimiter, const string &str);
 //Incluimos todas las clases
 #include "classes/Node.cpp"
 #include "classes/Lista.cpp"
+#include "interfaces/menu.cpp"
 
 /*
   #Hace lo mismo que el explode() de PHP
@@ -71,7 +77,15 @@ Lista *CreateEntity(char *route,const short int type, Lista *element) {
          if(archivo.eof()) {
             break;
          }
-         element->Add(type,str);
+
+         //Creamos una lista común para todas las entidades
+         if(type != 4) {
+            element->Add(type,str);
+         //Cuando sea (4) es porque es la lista de Secciones, que será ordenada
+         } else {
+            element->AddSort(type,str);
+         }
+
       }
    } else {
       cout << "ERROR: Intentando abrir el archivo <" << route << ">\n" << endl;

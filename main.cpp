@@ -1,5 +1,4 @@
 #include "core/core.cpp"
-//Ejemplo
 
 int main() {
 
@@ -10,18 +9,7 @@ int main() {
   Lista *Semestres = CreateEntity((char *) "data/semestres.txt",5,Semestres);
   Lista *Planillas = CreateEntity((char *) "data/planillas.txt",6,Planillas);
 
-  cout << "Alumnos:" << endl;
-  Alumnos->DebugPrint();
-  cout << "\n\nMaterias Inscritas:" << endl;
-  Materias_I->DebugPrint();
-  cout << "\n\nMaterias:\n" << endl;
-  Materias->DebugPrint();
-  cout << "\n\nSecciones:\n" << endl;
-  Secciones->DebugPrint();
-  cout << "\n\nSemestres:\n" << endl;
-  Semestres->DebugPrint();
-  cout << "\n\nPlanillas:\n" << endl;
-  Planillas->DebugPrint();
+  Menu();
 
   return true;
 }
