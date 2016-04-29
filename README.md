@@ -20,7 +20,7 @@
 
 **materias.txt**: [codigo materia] _ [nombre materia] _ [creditos] _ [semestre]
 
-**secciones.txt**: [codigo seccion] _ [numero de seccion] _ [cedula profesor] _ [profesor] _ [max alumnos] _ [turno] _ {[hora entrada],[hora salida]} _ [cantidad de alumnos ya inscritos]
+**secciones.txt**: [codigo seccion] _ [codigo_materia] _ [numero de seccion] _ [cedula profesor] _ [profesor] _ [max alumnos] _ [turno] _ [dia_semana] _ [hora entrada] _ [hora salida] _ [cantidad de alumnos ya inscritos]
 
 **semestres.txt**: [numero de semestre] _ [creditos dados en este semestre]
 

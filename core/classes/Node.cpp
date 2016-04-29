@@ -22,7 +22,7 @@ public:
   int creditos; //materias, semestres
   int semestre;//alumnos, materias, semestres
   string cod_seccion;//materias_inscritas, secciones, planillas
-  string cod_materia;//materias_inscritas, materias, planillas
+  string cod_materia;//materias_inscritas, materias, planillas, secciones
   string nombre;//alumnos, materias
   Node *sig;//todos
   Node *ant;//todos.

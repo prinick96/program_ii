@@ -1,6 +1,5 @@
 #include <stdlib.h>
-#define clear "clear"
-//#define clear "cls"
+
 void Menu();
 void ShowError(string error_s, bool error);
 
@@ -31,29 +30,27 @@ void Menu() {
 
     //Preguntar semestre (int), listar sus materias y la info del semestre
     cout << "1- Obtener informacion de Semestre" << endl;
-    //Preguntar materia (codigo), detallar todo y el semestre en que esta
+    //Preguntar materia (codigo), detallar todo, el semestre en que esta y todas las secciones de esa materia
     cout << "2- Obtener informacion de Materia" << endl;
-    //Preguntar materia (codigo), mostrar todas las secciones de esa materia
-    cout << "3- Obtener informacion de Secciones" << endl;
-    //Preguntar alumno (cedula), Consultar mi planilla de inscripcion
-    cout << "4- Consultar mi planilla de inscripcion" << endl;
+    //Preguntar alumno (cedula), consultar su planilla de inscripcion
+    cout << "3- Consultar mi planilla de inscripcion" << endl;
     //Mostrar todas las planillas de inscrpción y poder aceptar alumnos (ordenada por cedula)
-    cout << "5- Consultar todas las planillas de inscripcion" << endl;
+    cout << "4- Consultar todas las planillas de inscripcion" << endl;
     //Preguntar materia (codigo), desplegar SOLO las secciones con cupo
-    cout << "6- Ver secciones con cupo" << endl;
+    cout << "5- Ver secciones con cupo" << endl;
     //Preguntar alumno (cedula), Mostrar las materias inscriptas por mi (como alumno)
-    cout << "7- Mis materias" << endl;
+    cout << "6- Mis materias" << endl;
     //Preguntar seccion (codigo), mostrar todos sus alumnos
-    cout << "8- Alumnos en una seccion" << endl;
+    cout << "7- Alumnos en una seccion" << endl;
     //Proceso de inscripcion (solicitar datos), (meter en planilla)
-    cout << "9- Inscribirme" << endl;
+    cout << "8- Inscribirme" << endl;
     //Modificar/agregar/eliminar secciones,materias,alumnos
-    cout << "10- Modificacion de registros" << endl;
+    cout << "9- Modificacion de registros" << endl;
     cout << "0- SALIR" << endl;
 
     cout << "Teclear una opcion: "; cin >> opcion;
 
-    if(opcion < 0 || opcion > 10) {
+    if(opcion < 0 || opcion > 9) {
       error = true;
     } else {
       error = false;
@@ -91,9 +88,6 @@ void Menu() {
     break;
     case 9:
       cout << "interfaz 9" << endl;
-    break;
-    case 10:
-      cout << "interfaz 10" << endl;
     break;
     default:
       cout << "Adios." << endl;
