@@ -43,9 +43,10 @@ private:
         this->new_node->profesor = array[3];
         stringstream(array[4]) >> this->new_node->max_alumnos;
         this->new_node->turno = array[5];
-        stringstream(array[6]) >> this->new_node->hora_entrada;
-        stringstream(array[7]) >> this->new_node->hora_salida;
-        stringstream(array[8]) >> this->new_node->alumnos_inscritos;
+        stringstream(array[6]) >> this->new_node->dia;
+        stringstream(array[7]) >> this->new_node->hora_entrada;
+        stringstream(array[8]) >> this->new_node->hora_salida;
+        stringstream(array[9]) >> this->new_node->alumnos_inscritos;
       break;
       case 5: //Semestres
         stringstream(array[0]) >> this->new_node->semestre;
