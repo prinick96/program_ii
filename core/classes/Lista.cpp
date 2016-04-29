@@ -105,22 +105,26 @@ public:
    } else {
      //Luego, hay que ver si existe UN SOLO elemento en la lista para llenar con un "->sig" al primer elemento
      if(this->primero->sig == NULL) {
+
        //Si el único elemento que existe en ella es mayor el nuevo nodo, pues metemos nuevo nodo de primero
-       if(this->new_node->alumnos_inscritos <= this->primero->alumnos_inscritos) {
+       if((this->new_node->alumnos_inscritos <= this->primero->alumnos_inscritos && type == 4)
+       || (this->new_node->cedula <= this->primero->cedula && type == 6)) {
          this->new_node->sig = this->primero;
          this->primero = this->new_node;
        //Si no, lo metemos de último
-       } else {
+      } else {
          this->new_node->ant = this->ultimo;
          this->ultimo->sig = this->new_node;
          this->ultimo = this->new_node;
        }
+
      } else {
        //Ahora viene el caso "complejo", cuando hay más de un elemento en la lista
        Node *temp = this->primero, *selected = NULL; //Es importante fijarse en selected = NULL
        short int x = 1; //Este contador me servirá para saber si debo agregar de PRIMERO el elemento
        while (temp != NULL) {
-         if(this->new_node->alumnos_inscritos <= temp->alumnos_inscritos) { //if(1)
+         if((this->new_node->alumnos_inscritos <= temp->alumnos_inscritos && type == 4)
+         || (this->new_node->cedula <= temp->cedula && type == 6)) { //if(1)
            selected = temp; //Aquí capturo el elemento que es mayor o igual a el nuevo nodo
            break;
          }
@@ -177,12 +181,14 @@ public:
  /*
    Muestra gráficamente los nodos anidados
  */
- void DebugPrint(bool is_secciones = false) {
+ void DebugPrint(const int type = 0) {
    if(this->primero != NULL) {
      Node *temp = this->primero;
      while (temp != NULL) {
-       if(is_secciones) {
+       if(type == 4) {
          cout << temp->ant << " <- (" << temp << "): " << temp->alumnos_inscritos << " -> " << temp->sig << endl;
+       } else if(type == 6) {
+         cout << temp->ant << " <- (" << temp << "): " << temp->cedula << " -> " << temp->sig << endl;
        } else {
          cout << temp->ant << " <- (" << temp << ") -> " << temp->sig << endl;
        }
