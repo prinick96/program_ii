@@ -12,6 +12,7 @@ vector<string> explode( const string &delimiter, const string &str);
 //Incluimos todas las clases
 #include "classes/Node.cpp"
 #include "classes/Lista.cpp"
+#include "interfaces/menu.cpp"
 
 /*
   #Hace lo mismo que el explode() de PHP

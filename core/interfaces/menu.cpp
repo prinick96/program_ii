@@ -1,4 +1,6 @@
 #include <stdlib.h>
+#define clear "clear"
+//#define clear "cls"
 void Menu();
 void ShowError(string error_s, bool error);
 
