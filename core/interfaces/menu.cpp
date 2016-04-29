@@ -6,6 +6,7 @@ void ShowError(string error_s, bool error);
 //Incluyo todas las demás interfaces utilizadas.
 #include "ver_semestres.cpp"
 #include "ver_materias.cpp"
+#include "ver_planilla.cpp"
 
 /*
   Recibe el string con el error a mostrar, el estado de verdad del error.
@@ -69,10 +70,12 @@ void Menu() {
       VerMaterias();
     break;
     case 3:
-      cout << "interfaz 3" << endl;
+      //"ver_planilla.cpp"
+      VerPlanilla();
     break;
     case 4:
-      cout << "interfaz 4" << endl;
+      //"ver_planillas.cpp"
+      //VerPlanillas();
     break;
     case 5:
       cout << "interfaz 5" << endl;

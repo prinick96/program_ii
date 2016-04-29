@@ -60,14 +60,14 @@ void VerSemestres() {
     cout << "Opcion: "; cin >> x;
 
     if(x == 1) {
-      Menu();//Recursividad
+      Menu();
     } else {
       system(clear);
-      VerSemestres();//Recursividad
+      VerSemestres();
     }
 
   } else {
-    Menu(); //Recursividad, recuerda que estoy dentro de Menu()
+    Menu();
   }
 
 }

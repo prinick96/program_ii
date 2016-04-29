@@ -55,10 +55,10 @@ void VerMaterias() {
     cout << "Opcion: "; cin >> x;
 
     if(x == 1) {
-      Menu();//Recursividad
+      Menu();
     } else {
       system(clear);
-      VerMaterias();//Recursividad
+      VerMaterias();
     }
   } else {
     Menu();
