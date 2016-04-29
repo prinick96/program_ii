@@ -1,6 +1,6 @@
 class Lista {
 private:
-  //new_node es un nodo que solo estará involucrado en un proceso interno, no me interesa desde fuera
+  //new_node es un nodo que solo estará involucrado en un proceso interno, no me interesa desde fuera.
   Node *new_node;
   /*
     Crea un Nodo, a corde con lo que debería llevar el Nodo de cada una de las seis entidades.

@@ -5,7 +5,7 @@
     -Secciones
 */
 void VerMaterias() {
-  //Son variables externas (globales) definidas antes del int main() de main.cpp
+  //Son variables externas (globales) definidas antes del int main() de main.cpp.
   extern Lista *Materias;
   extern Lista *Secciones;
 

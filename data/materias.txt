@@ -2,10 +2,10 @@
 00002_Matematicas_7_1
 00003_Trigo_5_1
 00004_Lenguaje_5_1
-00005Calculo1_9_2
-00006Logica_5_2
-00007Program1_9_2
-00008Identidad1_2_2
+00005_Calculo1_9_2
+00006_Logica_5_2
+00007_Program1_9_2
+00008_Identidad1_2_2
 00009_Calculo2_9_3
 00010_MatDiscretas_5_3
 10005_FisicaGeneral_6_3
@@ -46,6 +46,3 @@
 04505_EticaProfesional_3_10
 03655_EvalDeSistemasInformaticos_5_10
 12305_GestionDeProyectosDeSoftware_5_10
-
-
-

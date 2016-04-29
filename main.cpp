@@ -9,6 +9,7 @@ Lista *Planillas = CreateEntity((char *) "data/planillas.txt",6,Planillas);
 
 int main() {
 
+  //Todo el menu
   Menu();
 
   return true;

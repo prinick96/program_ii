@@ -24,7 +24,7 @@ public:
   string cod_materia;//materias_inscritas, materias, planillas
   string nombre;//alumnos, materias
   Node *sig;//todos
-  Node *ant;//todos
+  Node *ant;//todos.
   /*
     __construct().
     Constructor de la clase Node, coloca el nodo "flotando" apenas se instancia,

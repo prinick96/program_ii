@@ -6,7 +6,7 @@
 #include <fstream>
 using namespace std;
 
-//Incluyo el prototipo para que esté disponible en Node.cpp y en Lista.cpp
+//Incluyo el prototipo para que esté disponible en Node.cpp y en Lista.cpp.
 vector<string> explode( const string &delimiter, const string &str);
 
 //Incluimos todas las clases

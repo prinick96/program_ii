@@ -2,7 +2,7 @@
 void Menu();
 void ShowError(string error_s, bool error);
 
-//Incluyo todas las demás interfaces utilizadas
+//Incluyo todas las demás interfaces utilizadas.
 #include "ver_semestres.cpp"
 #include "ver_materias.cpp"
 

@@ -1,5 +1,5 @@
 /*
-  Se encarga de mostrar toda la interfaz para ver información del semestre seleccionado
+  Se encarga de mostrar toda la interfaz para ver información del semestre seleccionado.
   Listas usadas aquí:
     -Materias
     -Semestres
