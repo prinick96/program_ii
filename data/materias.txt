@@ -1,4 +1,4 @@
-00001_Intro. Informatica_9_1_
-00002_Matematicas_9_1_
-00003_Trigo_4_1_
-00004_Lenguaje_2_1_
+00001_Intro. Informatica_9_1
+00002_Matematicas_9_1
+00003_Trigo_4_1
+00004_Lenguaje_2_1
