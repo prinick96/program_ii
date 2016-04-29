@@ -11,6 +11,7 @@ private:
   int max_alumnos;
   int alumnos_inscritos;
   int cedula_profesor;
+  short int dia_semana; //del 1 al 5, siendo 1 lunes, 5 viernes, en orden..
   short int hora_entrada;
   short int hora_salida;
   string profesor;

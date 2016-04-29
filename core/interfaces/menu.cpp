@@ -73,7 +73,7 @@ void Menu() {
       cout << "interfaz 9" << endl;
     break;
     case 10:
-      cout << "interfaz 9" << endl;
+      cout << "interfaz 10" << endl;
     break;
     default:
       cout << "Adios." << endl;
