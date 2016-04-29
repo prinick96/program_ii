@@ -38,7 +38,7 @@ void VerPlanilla() {
       temp_p = temp_p->sig;
     }
 
-    if(0 == y) { //Si y++ no se ejecuto nunca, significa que nunca encontró la planilla para ese user y x sigue siendo 0
+    if(0 == y) { //Si y++ no se ejecuto nunca, significa que nunca encontró la planilla para ese user & y sigue siendo 0
       cout << "No se ha encontrado informacion." << endl;
     }
 

@@ -7,6 +7,7 @@ void ShowError(string error_s, bool error);
 #include "ver_semestres.cpp"
 #include "ver_materias.cpp"
 #include "ver_planilla.cpp"
+#include "ver_secciones_cupo.cpp"
 
 /*
   Recibe el string con el error a mostrar, el estado de verdad del error.
@@ -29,15 +30,13 @@ void Menu() {
     ShowError("ERROR: Debes introducir un valor entre 0 y 9",error);
     cout << "Menu\n" << endl;
 
-    //Preguntar semestre (int), listar sus materias y la info del semestre
     cout << "1- Obtener informacion de Semestre" << endl;
-    //Preguntar materia (codigo), detallar todo, el semestre en que esta y todas las secciones de esa materia
     cout << "2- Obtener informacion de Materia" << endl;
-    //Preguntar alumno (cedula), consultar su planilla de inscripcion
     cout << "3- Consultar mi planilla de inscripcion" << endl;
+
     //Mostrar todas las planillas de inscrpción y poder aceptar alumnos (ordenada por cedula)
-    cout << "4- Consultar todas las planillas de inscripcion" << endl;
-    //Preguntar materia (codigo), desplegar SOLO las secciones con cupo
+    cout << "4- Todas las planillas de inscripcion y aceptar solicitudes" << endl;
+
     cout << "5- Ver secciones con cupo" << endl;
     //Preguntar alumno (cedula), Mostrar las materias inscriptas por mi (como alumno)
     cout << "6- Mis materias" << endl;
@@ -62,23 +61,19 @@ void Menu() {
   system(clear);
   switch (opcion) {
     case 1:
-      //"ver_semestres.cpp"
       VerSemestres();
     break;
     case 2:
-      //"ver_materias.cpp"
       VerMaterias();
     break;
     case 3:
-      //"ver_planilla.cpp"
       VerPlanilla();
     break;
     case 4:
-      //"ver_planillas.cpp"
-      //VerPlanillas();
+      //AceptarInscripcion();
     break;
     case 5:
-      cout << "interfaz 5" << endl;
+      VerSeccionesConCupo();
     break;
     case 6:
       cout << "interfaz 6" << endl;
