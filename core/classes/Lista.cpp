@@ -1,9 +1,7 @@
 class Lista {
 private:
-  Node *primero;
-  Node *ultimo;
+  //new_node es un nodo que solo estará involucrado en un proceso interno, no me interesa desde fuera
   Node *new_node;
-
   /*
     Crea un Nodo, a corde con lo que debería llevar el Nodo de cada una de las seis entidades.
     const short int type, definido como const porque nunca cambiará a lo largo del código.
@@ -61,6 +59,9 @@ private:
     }
   }
 public:
+  //Me interesa acceder a los nodos primero y ultimo desde FUERA de la lista
+  Node *primero;
+  Node *ultimo;
   /*
     __construct()
     Constructor, crea la lista "vacía", haciendo que sus dos nodos pricipales "primero" y "ultimo"
@@ -114,5 +115,4 @@ public:
       cout << "DEBUG: Lista vacia" << endl;
     }
   }
-
 };
