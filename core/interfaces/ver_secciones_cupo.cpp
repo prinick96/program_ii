@@ -37,7 +37,7 @@ void VerSeccionesConCupo(bool only_see = false, string cod_materia = "0") {
       cout << "Secciones Disponibles: " << endl;
       Node *temp_s = Secciones->primero;
       while (temp_s != NULL) {
-        string dia_semana[5] = {"Lunes","Martes","Miercoles","Jueves","Viernes"};
+        string dia_semana[6] = {"\0","Lunes","Martes","Miercoles","Jueves","Viernes"};
         if(temp_s->cod_materia == cod_materia && temp_s->alumnos_inscritos < temp_s->max_alumnos) {
           cout << " *" << temp_s->cod_seccion << "- Seccion " << temp_s->numero_seccion << endl;
           cout << "  - CUPOS: " << temp_s->alumnos_inscritos << " ocupados de " << temp_s->max_alumnos << " disponibles " << endl;

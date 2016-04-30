@@ -20,6 +20,7 @@ void InscripcionFase2(int creditos, int semestre, string cedula) {
   short int x, creditos_necesarios = 0;
   Node *temp_m = Materias->primero;
   for(x = 0; x < nrc.size(); x++) {
+    temp_m = Materias->primero;
     while (temp_m != NULL) {
       if(temp_m->cod_materia == nrc[x]) {
         creditos_necesarios += temp_m->creditos;
@@ -30,7 +31,6 @@ void InscripcionFase2(int creditos, int semestre, string cedula) {
   }
 
   if(creditos >= creditos_necesarios) {
-    vector <string> codigos_secciones;
     string c_seccion;
     for(x = 0; x < nrc.size(); x++) {
       system(clear);
@@ -46,6 +46,7 @@ void InscripcionFase2(int creditos, int semestre, string cedula) {
       delete[] str;//Libero de memoria el char * temporal
 
     }
+    cout << "\nSu inscripcion esta casi completa, deben aprobar su planilla de inscripcion." << endl;
   } else {
     cout << "Te faltan " << creditos_necesarios - creditos << " creditos para inscribir todas las materias solicitadas." << endl;
     short int y;

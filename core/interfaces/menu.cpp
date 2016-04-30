@@ -11,6 +11,7 @@ void ShowError(string error_s, bool error);
 #include "ver_mis_materias.cpp"
 #include "ver_alumnos_en_seccion.cpp"
 #include "inscripcion.cpp"
+#include "aceptar_inscripcion.cpp"
 
 /*
   Recibe el string con el error a mostrar, el estado de verdad del error.
@@ -71,7 +72,7 @@ void Menu() {
       VerPlanilla();
     break;
     case 4:
-      //AceptarInscripcion();
+      AceptarInscripcion();
     break;
     case 5:
       VerSeccionesConCupo();

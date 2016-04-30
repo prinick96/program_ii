@@ -4,15 +4,17 @@
   Planillas
   Materias
 */
-void VerPlanilla() {
+void VerPlanilla(bool only_see = false, int cedula = 0) {
   //Son variables externas (globales) definidas antes del int main() de main.cpp.
   extern Lista *Planillas;
   extern Lista *Materias;
-  int cedula;
 
-  cout << "Escribir 0 para regresar al MENU" << endl;
-  cout << "Introduce tu cedula: ";
-  cin >> cedula;
+  if(!only_see) {
+    cout << "Escribir 0 para regresar al MENU" << endl;
+    cout << "Introduce tu cedula: ";
+    cin >> cedula;
+  }
+
   if(cedula != 0) {
     short int y = 0;
     Node *temp_p = Planillas->primero, *temp_m = NULL;
@@ -42,16 +44,18 @@ void VerPlanilla() {
       cout << "No se ha encontrado informacion." << endl;
     }
 
-    short int x;
-    cout << "\n\nPara volver a consultar, introducir 0 u otro numero" << endl;
-    cout << "Para regresar al menu principal escriba 1" << endl;
-    cout << "Opcion: "; cin >> x;
+    if(!only_see) {
+      short int x;
+      cout << "\n\nPara volver a consultar, introducir 0 u otro numero" << endl;
+      cout << "Para regresar al menu principal escriba 1" << endl;
+      cout << "Opcion: "; cin >> x;
 
-    if(x == 1) {
-      Menu();
-    } else {
-      system(clear);
-      VerPlanilla();
+      if(x == 1) {
+        Menu();
+      } else {
+        system(clear);
+        VerPlanilla();
+      }
     }
   } else {
     Menu();
