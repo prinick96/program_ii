@@ -10,6 +10,7 @@ void ShowError(string error_s, bool error);
 #include "ver_secciones_cupo.cpp"
 #include "ver_mis_materias.cpp"
 #include "ver_alumnos_en_seccion.cpp"
+#include "inscripcion.cpp"
 
 /*
   Recibe el string con el error a mostrar, el estado de verdad del error.
@@ -42,9 +43,8 @@ void Menu() {
     cout << "5- Ver secciones con cupo" << endl;
     cout << "6- Mis materias" << endl;
     cout << "7- Alumnos en una seccion" << endl;
-    
-    //Proceso de inscripcion (solicitar datos), (meter en planilla)
     cout << "8- Inscribirme" << endl;
+
     //Modificar/agregar/eliminar secciones,materias,alumnos
     cout << "9- Modificacion de registros" << endl;
     cout << "0- SALIR" << endl;
@@ -83,7 +83,7 @@ void Menu() {
       VerAlumnosEnSeccion();
     break;
     case 8:
-      cout << "interfaz 8" << endl;
+      Inscripcion();
     break;
     case 9:
       cout << "interfaz 9" << endl;

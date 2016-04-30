@@ -1,17 +1,24 @@
 /*
+
+  Esta función es reutilizada en core/interfaces/inscripcion_2.cpp
+  Allí, ella pasa como parametros only_see = true,
+  cod_materia = "el codigo de una de las materias seleccionadas por el usuario a inscribirse",
+  Por lo que cuando es llamada desde inscripcion_2.cpp esta función SOLO muestra datos
+
   Se solicita el codigo de la materia, y se listan todas las secciones con cupo para esa materia.
   Listas usadas aqui:
   Secciones
   Materias
 */
-void VerSeccionesConCupo() {
+void VerSeccionesConCupo(bool only_see = false, string cod_materia = "0") {
   extern Lista *Secciones;
   extern Lista *Materias;
-  string cod_materia;
 
-  cout << "Escribir 0 para regresar al MENU" << endl;
-  cout << "Introducir codigo de materia: ";
-  cin >> cod_materia;
+  if(!only_see) {
+    cout << "Escribir 0 para regresar al MENU" << endl;
+    cout << "Introducir codigo de materia: ";
+    cin >> cod_materia;
+  }
   if(cod_materia != "0") {
 
     Node *temp_m = Materias->primero;
@@ -24,7 +31,9 @@ void VerSeccionesConCupo() {
 
     if(temp_m != NULL) {
       cout << "Nombre: " << temp_m->nombre << endl;
-      cout << "Semestre: " << temp_m->semestre << endl;
+      if(!only_see) {
+        cout << "Semestre: " << temp_m->semestre << endl;
+      }
       cout << "Secciones Disponibles: " << endl;
       Node *temp_s = Secciones->primero;
       while (temp_s != NULL) {
@@ -44,16 +53,18 @@ void VerSeccionesConCupo() {
       cout << "No se ha encontrado la materia solicitada." << endl;
     }
 
-    short int x;
-    cout << "\n\nPara seleccionar otra materia escriba 0 u otro numero" << endl;
-    cout << "Para regresar al menu principal escriba 1" << endl;
-    cout << "Opcion: "; cin >> x;
+    if(!only_see) {
+      short int x;
+      cout << "\n\nPara seleccionar otra materia escriba 0 u otro numero" << endl;
+      cout << "Para regresar al menu principal escriba 1" << endl;
+      cout << "Opcion: "; cin >> x;
 
-    if(x == 1) {
-      Menu();
-    } else {
-      system(clear);
-      VerSeccionesConCupo();
+      if(x == 1) {
+        Menu();
+      } else {
+        system(clear);
+        VerSeccionesConCupo();
+      }
     }
 
   } else {

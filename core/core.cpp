@@ -8,7 +8,6 @@
 //Si es Windows, usar cls, si es Linux usar clear
 //#define clear "cls"
 #define clear "clear"
-
 using namespace std;
 
 //Incluyo el prototipo para que esté disponible en Node.cpp y en Lista.cpp.
