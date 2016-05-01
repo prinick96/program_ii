@@ -1,3 +1,4 @@
+#include <stdlib.h>
 class Lista {
 private:
   //new_node es un nodo que solo estará involucrado en un proceso interno, no me interesa desde fuera.
@@ -45,8 +46,11 @@ private:
         stringstream(array[5]) >> this->new_node->max_alumnos;
         this->new_node->turno = array[6];
         stringstream(array[7]) >> this->new_node->dia;
-        stringstream(array[8]) >> this->new_node->hora_entrada;
-        stringstream(array[9]) >> this->new_node->hora_salida;
+
+        //Transforma en FLOAT
+        this->new_node->hora_entrada = atof(array[8].c_str());
+        this->new_node->hora_salida = atof(array[9].c_str());
+
         stringstream(array[10]) >> this->new_node->alumnos_inscritos;
       break;
       case 5: //Semestres

@@ -12,8 +12,8 @@ public:
   int alumnos_inscritos;
   int cedula_profesor;
   int dia; //1 lunes .. 5 viernes
-  short int hora_entrada;
-  short int hora_salida;
+  float hora_entrada;
+  float hora_salida;
   string profesor;
   string turno;
 
