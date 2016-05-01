@@ -8,7 +8,6 @@
   Materias_I
   Secciones
   Alumnos
-  Materias
 */
 void AceptarInscripcion() {
   extern Lista *Planillas;
@@ -20,7 +19,8 @@ void AceptarInscripcion() {
 
   cout << "Lista de planillas de inscripción de aspirantes\n" << endl;
 
-  Node *temp_p = Planillas->primero, *temp_a = NULL, *temp_s = NULL, *temp_m;
+  Node *temp_p = Planillas->primero, *temp_a = NULL, *temp_s = NULL;
+  short int zx = 0;
   while (temp_p != NULL) {
     /*
       Almacenamos las cedulas de los alumnos que solicitan SIN REPETIR ninguna.
@@ -37,7 +37,12 @@ void AceptarInscripcion() {
       }
       cout << temp_a->nombre << " v" << temp_p->cedula << endl;
     }
+    zx++;
     temp_p = temp_p->sig;
+  }
+
+  if(zx == 0) {
+    cout << "No hay nada en la lista de planillas" << endl;
   }
 
   //Obtengo toda la información de las secciones en UN Solo ciclo, porque más adelante la voy a necesitar
@@ -80,15 +85,11 @@ void AceptarInscripcion() {
             //Si esta condicion se da, la materia no choca y tiene cupo
             if(i_sec[temp_p->cod_seccion].alumnos_inscritos < i_sec[temp_p->cod_seccion].max_alumnos) { //if(2)
 
-              cout << "Entramos en IF con " << temp_p->cod_seccion << endl;
-
               //en el campo "nodo", tengo el valor de la dirección de memoria de esa sección
               (i_sec[temp_p->cod_seccion].nodo)->alumnos_inscritos++;
               seccion_elegida = temp_p->cod_seccion;
 
             } else { //if(2)
-
-              cout << "Entramos en el ELSE con " << temp_p->cod_seccion << endl;
 
               //En este punto, tengo que buscar reasignar a otra sección al alumno que si tenga cupo.
               for(iter = i_sec.begin(); iter != i_sec.end(); iter++) { //for(1)
@@ -146,6 +147,10 @@ void AceptarInscripcion() {
           }//end if(1)
           temp_p = temp_p->sig;
         }//end while(1)
+
+
+        //En este punto ya esta inscrito, por lo que he de sacarlo de planillas de inscripcion
+        Planillas->DelByCedula(cedula);
 
         cout << "El alumno fue inscrito correctamente!" << endl;
         cout << "\n\nPara volver a la lista de planillas, introducir 0 u otro numero" << endl;

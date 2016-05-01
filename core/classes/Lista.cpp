@@ -182,6 +182,36 @@ public:
    delete temp;
  }
  /*
+  Borra un elemento por cedula como parametro a identificar
+ */
+ void DelByCedula(int cedula) {
+   Node *temp = this->primero, *temp_del;
+   while (temp != NULL) {
+     if(temp->cedula == cedula) {
+       if(temp->ant == NULL && temp->sig == NULL) { //Es el unico elemento
+         delete temp;
+         this->primero = NULL;
+         this->ultimo = NULL;
+         break; //Como es el unico, detenemos el bucle
+       } else if(temp->ant == NULL && temp->sig != NULL) { //Es el primero y NO el unico
+         temp = temp->sig; //Avanzamos en la lista
+         this->DelFirst(); //Ese elemento de arriba como era el primero, esta en this->primero y lo borramos
+       } else if(temp->ant != NULL && temp->sig == NULL) { //Es el ultimo y NO el unico
+         this->DelLast(); //Y como es el ultimo, temp esta en this->ultimo, este se borra y se libera
+         break;
+       } else { //No es el unico, no es el primero y tampoco es el ultimo
+         (temp->ant)->sig = temp->sig; //Conecto el anterior con el que viene despues del que quiero borrar
+         (temp->sig)->ant = temp->ant; //Conecto el siguiente con el que viene antes del que quiero borrar
+         temp_del = temp;
+         temp = temp->sig;//Avanzamos en la lista
+         delete temp_del;
+       }
+     } else {
+       temp = temp->sig;
+     }
+   }
+ }
+ /*
    Muestra gráficamente los nodos anidados
  */
  void DebugPrint(const int type = 0) {
