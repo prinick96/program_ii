@@ -32,8 +32,7 @@ void InscripcionFase2(int creditos, int semestre, string cedula) {
 
   if(creditos >= creditos_necesarios) {
     string c_seccion;
-    x = 0;
-    while(x < nrc.size()) {
+    for(x = 0; x < nrc.size(); x++) {
       system(clear);
       cout << "Elige una seccion para inscribir tu materia." << endl;
       VerSeccionesConCupo(true,nrc[x]);
@@ -45,9 +44,8 @@ void InscripcionFase2(int creditos, int semestre, string cedula) {
       strcpy(str, nrc[x].c_str()); //Convierto en (char *) a data con el metodo c_str() y con strcpy() lo copio a str
       Planillas->AddSort(6,str);
       delete[] str;//Libero de memoria el char * temporal
-      x++;
+
     }
-    
     cout << "\nSu inscripcion esta casi completa, deben aprobar su planilla de inscripcion." << endl;
   } else {
     cout << "Te faltan " << creditos_necesarios - creditos << " creditos para inscribir todas las materias solicitadas." << endl;

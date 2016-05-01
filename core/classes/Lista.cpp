@@ -1,4 +1,3 @@
-#include <stdlib.h>
 class Lista {
 private:
   //new_node es un nodo que solo estará involucrado en un proceso interno, no me interesa desde fuera.

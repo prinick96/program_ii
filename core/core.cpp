@@ -4,6 +4,9 @@
 #include <sstream>
 #include <utility>
 #include <fstream>
+#include <stdlib.h>
+#include <map> //Libreria para crear arrays asociativos de la forma arreglo["index"] = "valor";
+
 
 //Si es Windows, usar cls, si es Linux usar clear
 //#define clear "cls"
@@ -16,6 +19,19 @@ vector<string> explode( const string &delimiter, const string &str);
 //Incluimos todas las clases
 #include "classes/Node.cpp"
 #include "classes/Lista.cpp"
+
+//Estructura que define la informacion de una seccion
+typedef struct {
+  string cod_materia;
+  short int dia;
+  float entrada;
+  float salida;
+  int max_alumnos;
+  int alumnos_inscritos;
+  Node *nodo;
+} array_asociativo;
+
+//La interfaz mayor
 #include "interfaces/menu.cpp"
 
 /*
