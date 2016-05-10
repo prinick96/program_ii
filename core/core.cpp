@@ -94,7 +94,7 @@ Lista *CreateEntity(char *route,const short int type, Lista *element) {
          }
 
          //Creamos una lista común para todas las entidades
-         if(type != 4 && type != 6) {
+         if(type != 4) {
             element->Add(type,str);
          //Cuando sea (4) es porque es la lista de Secciones o (6) Planillas, que será ordenada
          } else {
