@@ -9,8 +9,32 @@ Lista *Planillas = CreateEntity((char *) "data/planillas.txt",6,Planillas);
 
 int main() {
 
-  //Todo el menu
-  Menu();
+  // Un árbol de enteros
+  AVL ArbolInt;
+
+  // Inserción de nodos en árbol:
+  ArbolInt.Insertar(6);
+  ArbolInt.Insertar(77);
+  ArbolInt.Insertar(8);
+  ArbolInt.Insertar(84);
+  ArbolInt.Insertar(9);
+  ArbolInt.Insertar(11);
+  ArbolInt.Insertar(11);
+  ArbolInt.Insertar(16);
+  ArbolInt.Insertar(15);
+  ArbolInt.Insertar(121);
+  ArbolInt.Insertar(112);
+  ArbolInt.Insertar(0);
+  ArbolInt.Insertar(45);
+  ArbolInt.Insertar(3);
+  ArbolInt.Insertar(4);
+  ArbolInt.Insertar(5);
+
+
+  verArbol(ArbolInt.raiz,1);
+
+
+  cin.get();
 
   return true;
 }

@@ -1,5 +1,22 @@
 class Node {
 public:
+  //Arbol
+  int nota;
+  int time;
+  string semestral;
+  /*
+  En un arreglo:
+  0 Aprobado normal
+  1 Aprobado por Reparación
+  2 Reprobado
+  3 Retirado
+  */
+  int estado;
+  int FE;
+  Node *izquierdo;
+  Node *derecho;
+  Node *padre;
+
   //Alumnos
   int indice;
   int creditos_extras;
@@ -22,7 +39,7 @@ public:
   int creditos; //materias, semestres
   int semestre;//alumnos, materias, semestres
   string cod_seccion;//materias_inscritas, secciones, planillas
-  string cod_materia;//materias_inscritas, materias, planillas, secciones
+  string cod_materia;//materias_inscritas, materias, planillas, secciones, Arbol
   string nombre;//alumnos, materias
   Node *sig;//todos
   Node *ant;//todos.
@@ -32,7 +49,12 @@ public:
     enlazando con null a siguiente y anterior hasta que se defina estos.
   */
   Node(Node *s = NULL, Node *a = NULL) {
-    this->sig = s;
-    this->ant = a;
+    this->sig = NULL;
+    this->ant = NULL;
+
+    this->izquierdo = NULL;
+    this->derecho = NULL;
+    this->padre = NULL;
+    this->FE = 0;
   }
 };
