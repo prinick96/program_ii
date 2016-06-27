@@ -122,11 +122,12 @@ Lista *CreateEntity(char *route,const short int type, Lista *element) {
                //Si la cedula del usuario es igual a la cedula asociada en el record pss..
                if(leuser[0] == learbolito[0]) {
                  Arbol.Insertar(nota,time,learbolito[4],estado,learbolito[1]);
-                 //cout << "insert in " << Arbol.raiz << " note " << nota << endl;
+                 //cout << "insert in " << Arbol.raiz << " note " << nota << " user " <<  leuser[0] << endl;
                }
              }
              lerecords.close();
              //end pss...
+
 
              element->Add(type,str,Arbol.raiz);
            } else {

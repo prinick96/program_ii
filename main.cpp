@@ -13,13 +13,7 @@ int main() {
   //Menu();
 
   Record *rec = new Record();
-
-  AVL Arbol;
-  for(int x = 1; x < 20; x++) {
-    Arbol.Insertar(x,x*2,"semestral",1,"cod_materia");
-  }
-
-  rec->mostrar_indices();
+  rec->repitientes("00001");
 
 
   return true;

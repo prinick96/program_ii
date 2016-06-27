@@ -25,6 +25,9 @@ private:
         stringstream(array[5]) >> this->new_node->creditos_extras;
         stringstream(array[6]) >> this->new_node->semestre;
         this->new_node->record_academico = Arbol;
+
+        //cout << this->new_node->nombre << " rec " << this->new_node->record_academico << endl;
+
       break;
       case 2: //Materias Inscritas
         this->new_node->cod_materia = array[0];
@@ -83,7 +86,7 @@ public:
    Si la lista está vacía, el primer nodo == ultimo nodo
  */
  void Add(const short int type, char *elements, Node *Arbol = NULL) {
-   this->CreateNode(type,elements);
+   this->CreateNode(type,elements,Arbol);
    if(this->primero == NULL) {
      this->primero = this->new_node;
    } else {

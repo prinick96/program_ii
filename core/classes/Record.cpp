@@ -15,33 +15,13 @@ typedef struct {
   string nombre;
 } xd;
 
+typedef struct {
+  string nombre;
+  int veces;
+} fracasados;
+
 class Record {
-public:
-  vector<string> estado;
-  vector<jaja> lol;
-  Record *indices;
-
-  Record() {
-    this->estado.push_back("Aprobado normal");
-    this->estado.push_back("Aprobado por Reparación");
-    this->estado.push_back("Reprobado");
-    this->estado.push_back("Retirado");
-  }
-
-  //Mostrar por notas
-  void mostrar_por_notas(Node *raiz) {
-    if(raiz == NULL) {
-      return;
-    } else {
-      this->mostrar_por_notas(raiz->derecho);
-      cout << "-Nota: " << raiz->nota << endl;
-      cout << "-Período Académico: " << raiz->time << " -> " << raiz->semestral << endl;
-      cout << "-Estado: " << this->estado[raiz->estado] << endl;
-      cout << "-Código Materia: " << raiz->cod_materia << "\n" << endl;
-      this->mostrar_por_notas(raiz->izquierdo);
-    }
-  }
-
+private:
   //saca toda la info de un arbol a un vector dinamico de tipo 'jaja', que tiene la forma de un nodo de arbol
   void klk(Node *ah, vector<jaja> &k_ase) {
     jaja tmp;
@@ -81,20 +61,6 @@ public:
     return ah_ok;
   }
 
-  //Dado un alumno, mostrar el record académico en orden cronológico.
-  void mostrar_por_anio(Node *raiz, string nombre_alumno) {
-    int e_notas, aprobadas;
-    klk(raiz,this->lol);
-    this->lol = this->wasabi(this->lol,(this->lol).size());
-    cout << "Records academicos de " << nombre_alumno << " ordenados por anio " << endl;
-    for (int i = 0; i < (this->lol).size(); i++) {
-      cout << "-Nota: " << this->lol[i].nota << endl;
-      cout << "-Período Académico: " << this->lol[i].time << " -> " << this->lol[i].semestral << endl;
-      cout << "-Estado: " << this->estado[this->lol[i].estado] << endl;
-      cout << "-Código Materia: " << this->lol[i].cod_materia << "\n" << endl;
-    }
-  }
-
   //Dado un alumno, calcular y mostrar el índice académico, luego E_notas / aprobadas
   void indice_academico(Node *raiz, int &E_notas, int &aprobadas) {
     if(raiz == NULL) {
@@ -106,6 +72,62 @@ public:
       }
       E_notas = E_notas + raiz->nota;
       this->indice_academico(raiz->izquierdo,E_notas,aprobadas);
+    }
+  }
+
+  //Busca fracasos
+  void search_materia(Node *raiz,string cod_materia, int &veces) {
+    if(raiz == NULL) {
+      return;
+    } else {
+      this->search_materia(raiz->derecho,cod_materia,veces);
+      //que la materia del arbol sea igual al buscado y que su estado sea raspado
+      if(raiz->cod_materia == cod_materia && raiz->estado == 2) {
+        veces++;
+      }
+      this->search_materia(raiz->izquierdo,cod_materia,veces);
+    }
+  }
+
+public:
+  vector<string> estado;
+  vector<jaja> lol;
+  Record *indices;
+
+  Record() {
+    this->estado.push_back("Aprobado normal");
+    this->estado.push_back("Aprobado por Reparación");
+    this->estado.push_back("Reprobado");
+    this->estado.push_back("Retirado");
+  }
+
+  //Mostrar por notas
+  void mostrar_por_notas(Node *raiz) {
+    if(raiz == NULL) {
+      return;
+    } else {
+      this->mostrar_por_notas(raiz->derecho);
+      cout << "-Nota: " << raiz->nota << endl;
+      cout << "-Período Académico: " << raiz->time << " -> " << raiz->semestral << endl;
+      cout << "-Estado: " << this->estado[raiz->estado] << endl;
+      cout << "-Código Materia: " << raiz->cod_materia << "\n" << endl;
+      this->mostrar_por_notas(raiz->izquierdo);
+    }
+  }
+
+  /*
+    Dado un alumno, mostrar el record académico en orden cronológico.
+  */
+  void mostrar_por_anio(Node *raiz, string nombre_alumno) {
+    int e_notas, aprobadas;
+    this->klk(raiz,this->lol);
+    this->lol = this->wasabi(this->lol,(this->lol).size());
+    cout << "Records academicos de " << nombre_alumno << " ordenados por anio " << endl;
+    for (int i = 0; i < (this->lol).size(); i++) {
+      cout << "-Nota: " << this->lol[i].nota << endl;
+      cout << "-Período Académico: " << this->lol[i].time << " -> " << this->lol[i].semestral << endl;
+      cout << "-Estado: " << this->estado[this->lol[i].estado] << endl;
+      cout << "-Código Materia: " << this->lol[i].cod_materia << "\n" << endl;
     }
   }
 
@@ -135,10 +157,12 @@ public:
           repetidas.push_back(temp_a->cedula);
 
           e_notas = aprobadas = 0;
+          //cout << temp_a->record_academico << endl;
           if(temp_a->record_academico == NULL) {
             indice = 0;
           } else {
             this->indice_academico(temp_a->record_academico,e_notas,aprobadas);
+            //cout << temp_a->record_academico << endl;
             indice = (e_notas/aprobadas);
           }
           cout << "Indice de " << temp_a->nombre << " : " << indice << "\n" << endl;
@@ -187,12 +211,41 @@ public:
 
 
   /**
-  Dada una materia, mostrar quienes son los alumnos que la
+    Dada una materia, mostrar quienes son los alumnos que la
+    están viendo por cuarta vez y la han reprobado ya tres veces,
+    para evaluar cuáles son los alumnos con alto riesgo.
+  */
+  void repitientes(string cod_materia) {
+    extern Lista *Alumnos;
+    vector<fracasados> alumnos;
+    fracasados tmp;
+    Node *temp_a = Alumnos->primero;
+    int veces;
 
-están viendo por cuarta vez y la han reprobado ya tres veces,
+    while (temp_a != NULL) {
+      veces = 0;
+      this->search_materia(temp_a->record_academico,cod_materia,veces);
+      tmp.nombre = temp_a->nombre;
+      tmp.veces = veces;
+      alumnos.push_back(tmp);
+      temp_a = temp_a->sig;
+    }
 
-para evaluar cuáles son los alumnos con alto riesgo.
-*/
+    cout << "Alumnos que han reprobado tres o mas veces: \n\n" << endl;
+    int final = 0;
+    for (int i = 0; i < alumnos.size(); i++) {
+      //cout << alumnos[i].nombre << " ha reprobado " << alumnos[i].veces << " veces" << endl;
+      if(alumnos[i].veces >= 3) {
+        cout << alumnos[i].nombre << " ha reprobado " << alumnos[i].veces << " veces" << endl;
+        final++;
+      }
+    }
+
+    if(final == 0) {
+      cout << "Ningun alumno ha reprobado 3 o mas veces" << endl;
+    }
+
+  }
 
 /*
 Obtener las primeras cinco materias en las que un alumno en
