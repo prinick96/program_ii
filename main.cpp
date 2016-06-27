@@ -10,11 +10,7 @@ Lista *Planillas = CreateEntity((char *) "data/planillas.txt",6,Planillas);
 int main() {
 
   //load
-  //Menu();
-
-  Record *rec = new Record();
-  rec->get_top_materias(21000100);
-
-
+  Menu();
+  
   return true;
 }

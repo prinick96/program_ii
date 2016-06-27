@@ -50,6 +50,30 @@ private:
     }
   }
 
+  //obtiene el top de notas recursivamente en el arbol
+  void top_recursive(Node *raiz,vector<__top__> &mejores) {
+    extern Lista *Materias;
+    __top__ tmp;
+    if(raiz == NULL) {
+      return;
+    } else {
+      this->top_recursive(raiz->derecho,mejores);
+
+      Node *temp_m = Materias->primero;
+      while (temp_m != NULL) {
+        if(temp_m->cod_materia == raiz->cod_materia) {
+          tmp.nombre = temp_m->nombre;
+          tmp.nota = raiz->nota;
+          mejores.push_back(tmp);
+          break;
+        }
+        temp_m = temp_m->sig;
+      }
+
+      this->top_recursive(raiz->izquierdo,mejores);
+    }
+  }
+
   //iDirecta
   vector<jaja> wasabi(vector<jaja> ah_ok, int n) {
     int x,val,y;
@@ -284,30 +308,6 @@ public:
 
   }
 
-
-void top_recursive(Node *raiz,vector<__top__> &mejores) {
-  extern Lista *Materias;
-  __top__ tmp;
-  if(raiz == NULL) {
-    return;
-  } else {
-    this->top_recursive(raiz->derecho,mejores);
-
-    Node *temp_m = Materias->primero;
-    while (temp_m != NULL) {
-      if(temp_m->cod_materia == raiz->cod_materia) {
-        tmp.nombre = temp_m->nombre;
-        tmp.nota = raiz->nota;
-        mejores.push_back(tmp);
-        break;
-      }
-      temp_m = temp_m->sig;
-    }
-
-    this->top_recursive(raiz->izquierdo,mejores);
-  }
-}
-
 /*
   Obtener las primeras cinco materias en las que un alumno en
   particular ha obtenido las mejores calificaciones.
@@ -400,6 +400,27 @@ void get_sufrimiento(int cedula) {
     cout << "No se ha encontrado el alumno" << endl;
   }
 
+}
+
+void pedir_alumno(int cedula, int &E_notas, int &aprobadas, bool indice = false) {
+  extern Lista* Alumnos;
+  Node *temp_a = Alumnos->primero;
+
+  while (temp_a != NULL) {
+    if(temp_a->cedula == cedula) {
+      if(false == indice) {
+        this->mostrar_por_anio(temp_a->record_academico, temp_a->nombre);
+      } else {
+        this->indice_academico(temp_a->record_academico, E_notas, aprobadas);
+      }
+      break;
+    }
+    temp_a = temp_a->sig;
+  }
+
+  if(temp_a == NULL) {
+    cout << "No se ha encontrado al alumno" << endl;
+  }
 }
 
 };

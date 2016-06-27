@@ -11,6 +11,12 @@ void ShowError(string error_s, bool error);
 #include "inscripcion.cpp"
 #include "aceptar_inscripcion.cpp"
 #include "modificar_alumno.cpp"
+#include "trees/mostrar_record_crono.cpp"
+#include "trees/mostrar_indice_alumno.cpp"
+#include "trees/mostrar_indices.cpp"
+#include "trees/mostrar_fracasos.cpp"
+#include "trees/mostrar_top.cpp"
+#include "trees/mostrar_sufrimiento.cpp"
 
 /*
   Recibe el string con el error a mostrar, el estado de verdad del error.
@@ -42,11 +48,17 @@ void Menu() {
     cout << "7- Alumnos en una seccion" << endl;
     cout << "8- Inscribirme" << endl;
     cout << "9- Modificar mis datos de alumno" << endl;
+    cout << "10- Mostrar record academico de alumno" << endl;
+    cout << "11- Mostrar indice academico de alumno" << endl;
+    cout << "12- Mostrar indice academico de todos los alumnos inscritos" << endl;
+    cout << "13- Mostrar raspados de una materia" << endl;
+    cout << "14- Mostrar mejores materias de un alumno" << endl;
+    cout << "15- Mostrar la peor materia de un alumno" << endl;
     cout << "0- SALIR" << endl;
 
     cout << "Teclear una opcion: "; cin >> opcion;
 
-    if(opcion < 0 || opcion > 9) {
+    if(opcion < 0 || opcion > 15) {
       error = true;
     } else {
       error = false;
@@ -82,6 +94,24 @@ void Menu() {
     break;
     case 9:
       ModificarAlumno();
+    break;
+    case 10:
+      MostrarRecordCrono();
+    break;
+    case 11:
+      MostrarIndiceAlumno();
+    break;
+    case 12:
+      MostrarIndices();
+    break;
+    case 13:
+      MostrarFracasos();
+    break;
+    case 14:
+      MostrarTop();
+    break;
+    case 15:
+      MostrarSufrimiento();
     break;
     default:
       cout << "Adios." << endl;
