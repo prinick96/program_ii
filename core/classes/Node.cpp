@@ -22,6 +22,7 @@ public:
   int creditos_extras;
   string expediente;
   string nacimiento;
+  Node *record_academico;
 
   //Secciones
   int numero_seccion;

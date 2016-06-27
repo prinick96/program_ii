@@ -10,7 +10,7 @@ private:
     char *elements: "string" debe seguir la estructura de cada línea correspondiente al archivo en data/
     de la entidad, de aquí se extraen los elementos a ingresar.
   */
-  void CreateNode(const short int type, char *elements) {
+  void CreateNode(const short int type, char *elements, Node *Arbol = NULL) {
     this->new_node = new Node();
 
     vector<string> array = explode("_", (string) elements); //un vector dinámico
@@ -24,6 +24,7 @@ private:
         stringstream(array[4]) >> this->new_node->indice;
         stringstream(array[5]) >> this->new_node->creditos_extras;
         stringstream(array[6]) >> this->new_node->semestre;
+        this->new_node->record_academico = Arbol;
       break;
       case 2: //Materias Inscritas
         this->new_node->cod_materia = array[0];
@@ -81,7 +82,7 @@ public:
    ##Cada Nodo nuevo, se colocará de último en la lista##
    Si la lista está vacía, el primer nodo == ultimo nodo
  */
- void Add(const short int type, char *elements) {
+ void Add(const short int type, char *elements, Node *Arbol = NULL) {
    this->CreateNode(type,elements);
    if(this->primero == NULL) {
      this->primero = this->new_node;

@@ -18,7 +18,10 @@ int main() {
   //verArbol(Arbol.raiz);
 
   Record *rec = new Record();
-  rec->mostrar_indices();
+
+  //load
+  //Menu();
+
   //rec->mostrar_por_notas(Arbol.raiz);
 
   return true;

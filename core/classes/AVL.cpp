@@ -1,5 +1,3 @@
-class AVL;
-
 class AVL {
   private:
    enum {IZQUIERDO, DERECHO};

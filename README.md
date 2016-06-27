@@ -25,3 +25,5 @@
 **semestres.txt**: [numero de semestre] _ [creditos dados en este semestre]
 
 **planillas.txt**: [codigo materia solicitada] _ [codigo seccion solicitada] _ [cedula alumno que solicita]
+
+**record.txt**: [cedula] _ [codigo_materia] _ [nota] _ [time] _ [semestral] _ [estado]

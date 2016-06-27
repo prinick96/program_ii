@@ -83,7 +83,10 @@ vector<string> explode( const string &delimiter, const string &str)
 */
 Lista *CreateEntity(char *route,const short int type, Lista *element) {
    ifstream archivo;
-   char str[180];
+   ifstream lerecords;
+   int nota, time, estado;
+   vector<string> learbolito, leuser;
+   char str[180], lerecords_str[180];
    archivo.open(route);
    element = new Lista();
 
@@ -97,7 +100,39 @@ Lista *CreateEntity(char *route,const short int type, Lista *element) {
 
          //Creamos una lista común para todas las entidades
          if(type != 4) {
-            element->Add(type,str);
+
+           if(type == 1) {
+             AVL Arbol;
+
+             //pss....
+             lerecords.open((char *) "data/record.txt");
+             while (!lerecords.eof()) {
+               lerecords.getline(lerecords_str,180);
+               if(lerecords.eof()) {
+                  break;
+               }
+
+               learbolito = explode("_", (string) lerecords_str);
+               leuser = explode("_", (string) str);
+
+               stringstream(learbolito[2]) >> nota;
+               stringstream(learbolito[3]) >> time;
+               stringstream(learbolito[5]) >> estado;
+
+               //Si la cedula del usuario es igual a la cedula asociada en el record pss..
+               if(leuser[0] == learbolito[0]) {
+                 Arbol.Insertar(nota,time,learbolito[4],estado,learbolito[1]);
+                 cout << "insert in " << Arbol.raiz << " note " << nota << endl;
+               }
+             }
+             lerecords.close();
+             //end pss...
+
+             element->Add(type,str,Arbol.raiz);
+           } else {
+             element->Add(type,str);
+           }
+
          //Cuando sea (4) es porque es la lista de Secciones o (6) Planillas, que será ordenada
          } else {
             element->AddSort(type,str);

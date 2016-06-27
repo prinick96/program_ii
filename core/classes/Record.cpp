@@ -38,18 +38,13 @@ public:
     }
   }
 
-  void printer() {
-    cout << "kha" << endl;
-  }
-
   /**
   Mostrar todos los índices académicos de cada alumno e
   imprimir los datos del alumno con mejor índice y los datos del
   alumno con el peor índice de la Escuela.
   */
-  void mostrar_indices() {
-    this->indices = new Record();
-    this->indices->printer();
+  void mostrar_indices(Node *Alumno) {
+
   }
 
 
