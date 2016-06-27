@@ -9,32 +9,17 @@ Lista *Planillas = CreateEntity((char *) "data/planillas.txt",6,Planillas);
 
 int main() {
 
-  // Un árbol de enteros
-  AVL ArbolInt;
+  /*AVL Arbol;
+  //const int nota, const int time, const string semestral, const int estado, const string cod_materia
+  for(int i = 1; i < 20; i++) {
+    Arbol.Insertar(20 + i,10 + i,"Mayo-Junio",1,"021545");
+  }*/
 
-  // Inserción de nodos en árbol:
-  ArbolInt.Insertar(6);
-  ArbolInt.Insertar(77);
-  ArbolInt.Insertar(8);
-  ArbolInt.Insertar(84);
-  ArbolInt.Insertar(9);
-  ArbolInt.Insertar(11);
-  ArbolInt.Insertar(11);
-  ArbolInt.Insertar(16);
-  ArbolInt.Insertar(15);
-  ArbolInt.Insertar(121);
-  ArbolInt.Insertar(112);
-  ArbolInt.Insertar(0);
-  ArbolInt.Insertar(45);
-  ArbolInt.Insertar(3);
-  ArbolInt.Insertar(4);
-  ArbolInt.Insertar(5);
+  //verArbol(Arbol.raiz);
 
-
-  verArbol(ArbolInt.raiz,1);
-
-
-  cin.get();
+  Record *rec = new Record();
+  rec->mostrar_indices();
+  //rec->mostrar_por_notas(Arbol.raiz);
 
   return true;
 }

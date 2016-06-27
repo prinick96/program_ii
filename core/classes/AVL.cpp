@@ -14,7 +14,7 @@ class AVL {
    AVL() : raiz(NULL), actual(NULL) {}
    ~AVL() { Podar(raiz); }
    // Insertar en árbol ordenado:
-   void Insertar(const int nota);
+   void Insertar(const int nota, const int time, const string semestral, const int estado, const string cod_materia);
    // Borrar un elemento del árbol:
    void Borrar(const int nota);
    // Función de búsqueda:
@@ -64,7 +64,7 @@ void AVL::Podar(Node* &nodo)
 }
 
 // Insertar un nota en el árbol AVL
-void AVL::Insertar(const int nota)
+void AVL::Insertar(const int nota, const int time, const string semestral, const int estado, const string cod_materia)
 {
    Node *padre = NULL;
 
@@ -83,6 +83,10 @@ void AVL::Insertar(const int nota)
    if(Vacio(padre)) {
      raiz = new Node();
      raiz->nota = nota;
+     raiz->time = time;
+     raiz->semestral = semestral;
+     raiz->estado = estado;
+     raiz->cod_materia = cod_materia;
    }
    // Si el nota es menor que el que contiene el nodo padre, lo insertamos
    // en la rama izquierda
@@ -90,6 +94,10 @@ void AVL::Insertar(const int nota)
       padre->izquierdo = new Node();
       padre->izquierdo->nota = nota;
       padre->izquierdo->padre = padre;
+      padre->izquierdo->time = time;
+      padre->izquierdo->semestral = semestral;
+      padre->izquierdo->estado = estado;
+      padre->izquierdo->cod_materia = cod_materia;
       Equilibrar(padre, IZQUIERDO, true);
    }
    // Si el nota es mayor que el que contiene el nodo padre, lo insertamos
@@ -98,6 +106,10 @@ void AVL::Insertar(const int nota)
       padre->derecho = new Node();
       padre->derecho->nota = nota;
       padre->derecho->padre = padre;
+      padre->derecho->time = time;
+      padre->derecho->semestral = semestral;
+      padre->derecho->estado = estado;
+      padre->derecho->cod_materia = cod_materia;
       Equilibrar(padre, DERECHO, true);
    }
 }
@@ -447,8 +459,6 @@ void verArbol(Node *arbol, int n = 1)
 
   verArbol(arbol->derecho, n+1);
 
-  for(int i=0; i<n; i++)
-  cout<<"   ";
   cout<< arbol->nota <<endl;
   verArbol(arbol->izquierdo, n+1);
 }

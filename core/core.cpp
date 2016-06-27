@@ -19,7 +19,8 @@ vector<string> explode( const string &delimiter, const string &str);
 //Incluimos todas las clases
 #include "classes/Node.cpp"
 #include "classes/Lista.cpp"
-#include "classes/Arbol.cpp"
+#include "classes/AVL.cpp"
+#include "classes/Record.cpp"
 
 //Estructura que define la informacion de una seccion
 typedef struct {
