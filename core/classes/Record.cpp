@@ -1,3 +1,4 @@
+#include <algorithm> //para el find() del vector
 typedef struct {
   int nota;
   int time;
@@ -5,6 +6,14 @@ typedef struct {
   string semestral;
   string cod_materia;
 } jaja;
+
+typedef struct {
+  int cedula;
+  int semestre;
+  int indice;
+  string nacimiento;
+  string nombre;
+} xd;
 
 class Record {
 public:
@@ -50,7 +59,7 @@ public:
     }
   }
 
-  //iDirecta por aqui?...
+  //iDirecta
   vector<jaja> wasabi(vector<jaja> ah_ok, int n) {
     int x,val,y;
     jaja tmp;
@@ -107,18 +116,73 @@ public:
   */
   void mostrar_indices() {
     extern Lista *Alumnos;
-    int e_notas, aprobadas;
+    extern Lista *Materias_I;
+    int e_notas = 0, aprobadas = 0, min = 20, max = 0, indice;
+    map<int, xd> kha;
+    vector<int> repetidas;
 
-    Node *temp_a = Alumnos->primero;
-    cout << "Indices académicos ordenados por alumnos: " << endl;
-    while (temp_a != NULL) {
-      e_notas = aprobadas = 0;
-      indice_academico(temp_a->record_academico,e_notas,aprobadas);
-      cout << "Indice de " << temp_a->nombre << " : " <<  (e_notas/aprobadas) << "\n" << endl;
-      temp_a = temp_a->sig;
+    Node *temp_a = NULL;
+    Node *temp_mi = Materias_I->primero;
+
+    cout << "Indices académicos ordenados por alumnos: \n\n" << endl;
+    while (temp_mi != NULL) {
+      temp_a = Alumnos->primero;
+
+      while (temp_a != NULL) {
+
+        if(temp_a->cedula == temp_mi->cedula && find(repetidas.begin(), repetidas.end(), temp_a->cedula) == repetidas.end()) {
+
+          repetidas.push_back(temp_a->cedula);
+
+          e_notas = aprobadas = 0;
+          if(temp_a->record_academico == NULL) {
+            indice = 0;
+          } else {
+            this->indice_academico(temp_a->record_academico,e_notas,aprobadas);
+            indice = (e_notas/aprobadas);
+          }
+          cout << "Indice de " << temp_a->nombre << " : " << indice << "\n" << endl;
+
+          //menor indice alum
+          if(indice <= min) {
+            min = indice;
+            kha[min].nombre = temp_a->nombre;
+            kha[min].cedula = temp_a->cedula;
+            kha[min].semestre = temp_a->semestre;
+            kha[min].nacimiento = temp_a->nacimiento;
+            kha[min].indice = indice;
+          }
+
+          //mayor indice alum
+          if(indice > max) {
+            max = indice;
+            kha[max].nombre = temp_a->nombre;
+            kha[max].cedula = temp_a->cedula;
+            kha[max].semestre = temp_a->semestre;
+            kha[max].nacimiento = temp_a->nacimiento;
+            kha[max].indice = indice;
+          }
+
+        }
+
+        temp_a = temp_a->sig;
+      }
+      temp_mi = temp_mi->sig;
     }
 
-    //FALTA MEJOR Y EL PEOR IMPRIMIR
+    cout << " MEJOR Y PEOR ESTUDIANTE \n" << endl;
+    cout << "Mejor estudiante: " <<  kha[max].nombre <<endl;
+    cout << "- Cedula: " << kha[max].cedula << endl;
+    cout << "- Indice: " << kha[max].indice << endl;
+    cout << "- Nacimiento: " << kha[max].nacimiento << endl;
+    cout << "- Semestre actual: " << kha[max].semestre << "\n\n" << endl;
+
+    cout << "Peor estudiante: " <<  kha[min].nombre <<endl;
+    cout << "- Cedula: " << kha[min].cedula << endl;
+    cout << "- Indice: " << kha[min].indice << endl;
+    cout << "- Nacimiento: " << kha[min].nacimiento << endl;
+    cout << "- Semestre actual: " << kha[min].semestre << "\n\n" << endl;
+
   }
 
 

@@ -19,7 +19,7 @@ int main() {
     Arbol.Insertar(x,x*2,"semestral",1,"cod_materia");
   }
 
-  rec->mostrar_por_anio(Arbol.raiz,"alguien");
+  rec->mostrar_indices();
 
 
   return true;
