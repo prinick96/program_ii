@@ -13,7 +13,7 @@ int main() {
   //Menu();
 
   Record *rec = new Record();
-  rec->repitientes("00001");
+  rec->get_top_materias(21000100);
 
 
   return true;
