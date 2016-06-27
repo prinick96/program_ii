@@ -10,7 +10,6 @@ class AVL {
     int altura;
    // Constructor y destructor básicos:
    AVL() : raiz(NULL), actual(NULL) {}
-   ~AVL() { Podar(raiz); }
    // Insertar en árbol ordenado:
    void Insertar(const int nota, const int time, const string semestral, const int estado, const string cod_materia);
    // Borrar un elemento del árbol:

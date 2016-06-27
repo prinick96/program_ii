@@ -1,16 +1,9 @@
 class Node {
 public:
-  //Arbol
+  //Arbolito
   int nota;
   int time;
   string semestral;
-  /*
-  En un arreglo:
-  0 Aprobado normal
-  1 Aprobado por Reparación
-  2 Reprobado
-  3 Retirado
-  */
   int estado;
   int FE;
   Node *izquierdo;

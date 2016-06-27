@@ -9,20 +9,18 @@ Lista *Planillas = CreateEntity((char *) "data/planillas.txt",6,Planillas);
 
 int main() {
 
-  /*AVL Arbol;
-  //const int nota, const int time, const string semestral, const int estado, const string cod_materia
-  for(int i = 1; i < 20; i++) {
-    Arbol.Insertar(20 + i,10 + i,"Mayo-Junio",1,"021545");
-  }*/
-
-  //verArbol(Arbol.raiz);
-
-  Record *rec = new Record();
-
   //load
   //Menu();
 
-  //rec->mostrar_por_notas(Arbol.raiz);
+  Record *rec = new Record();
+
+  AVL Arbol;
+  for(int x = 1; x < 20; x++) {
+    Arbol.Insertar(x,x*2,"semestral",1,"cod_materia");
+  }
+
+  rec->mostrar_por_anio(Arbol.raiz,"alguien");
+
 
   return true;
 }
